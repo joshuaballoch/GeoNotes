@@ -1,0 +1,3 @@
+# Logfile created on 2012-03-25 19:13:35 -0400 by logger.rb/25413
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: GET / with {} and HTTP headers {"HTTP_REFERER"=>"/"}

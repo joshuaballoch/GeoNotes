@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GeoNotes</title>
+  <title><%= title %></title>
   <%= render 'layouts/assets' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
+	<%= render 'layouts/header' %>
+	
+	<section>
+		<%= yield %>
+	</section>
 
 </body>
 </html>
