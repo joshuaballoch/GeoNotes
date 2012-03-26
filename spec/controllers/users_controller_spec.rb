@@ -109,9 +109,61 @@ describe UsersController do
     end
     
     it "should show the user page" do
-      get user_path(assigns(@user))
+      get 'show', :id => @user
       response.should be_success
     end
   end
   
+  describe "editing tests" do
+    before(:each) do 
+      @user = FactoryGirl.create(:user)
+    end
+    
+    it "should load the edit page" do
+      get 'edit', :id => @user
+      response.should be_success
+    end
+    
+    it "should have the right title on the edit page" do
+      get 'edit', :id => @user
+      response.should have_selector(:title, :content => "Edit User")
+    end
+  end
+  
+  describe "test UPDATE" do
+    before(:each) do 
+      @user = FactoryGirl.create(:user)
+    end
+    
+    describe "in failure to update" do
+      before(:each) do 
+        @attr = {:username => "", :email => "", :password => "", :password_confirmation => ""}
+      end
+      
+      it "should render the 'edit' page" do 
+        put :update, :id => @user, :user => @attr
+        response.should render_template('edit')
+      end
+      
+      it "should have the right title" do
+        put :update, :id => @user, :user => @attr
+        response.should have_selector('title', :content => "Edit User")
+      end
+    end
+    
+    describe "in success to update" do
+      before(:each) do 
+        @attr = {:username => "newname", :email => "newemail@email.com", :password => "password1", :password_confirmation => "password1"}
+      end
+
+      it "should change the user's attributes" do 
+        put :update, :id => @user, :user => @attr
+        @user.reload
+        @user.username.should == @attr[:username]
+        @user.email.should == @attr[:email]
+        @user.encrypted_password.should == assigns(:user).encrypted_password
+      end
+
+    end
+  end
 end

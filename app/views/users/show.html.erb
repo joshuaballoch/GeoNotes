@@ -1,1 +1,4 @@
-show
+<h1><%=@user.username%></h1>
+<h5><%= @user.email %></h5>
+<%= link_to "edit", edit_user_path(@user) %>
+<br><br>Nothing else on the user page for the time being..
