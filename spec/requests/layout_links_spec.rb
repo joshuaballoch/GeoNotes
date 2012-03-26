@@ -9,6 +9,8 @@ describe "LayoutLinks" do
     visit root_path
     click_link "Home"
     response.should have_selector('title', :content => "Home")
+    click_link "Community"
+    response.should have_selector('title', :content => "Community")
     #Add more nav link tests
   end
 end
