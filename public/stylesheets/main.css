@@ -46,3 +46,23 @@ section {
 	background:#fff;
 	margin:0 auto 0 auto;
 }
+.flash {
+	padding:10px;
+	font-size:12px;
+	margin:5px;
+}
+.success {
+	background:#E6EFC2;
+	color:#529214;
+	border:1px solid #C6D880;
+}
+.notice {
+	background:#FFF6BF;
+	color:#817134;
+	border:1px solid #FFD324;
+}
+.error {
+	background:#FBE3E4;
+	color:#D12F19;
+	border:1px solid #FBC2C4;
+}
