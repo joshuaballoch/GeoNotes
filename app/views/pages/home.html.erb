@@ -1,18 +1,21 @@
 this is the home page for now.
-<%= render 'shared/messages' %>
 
 <% form_for @user do |f| %>
-	<%= f.label :username %>
-	<%= f.text_field :username %>
-	
-	<%= f.label :email %>
-	<%= f.text_field :email %>
+<%= render 'shared/messages' %>
 
-	<%= f.label :password %>
+	<%= f.text_field :username %>
+	<%= f.label :username %>
+	
+	<%= f.text_field :email %>
+	<%= f.label :email %>
+
 	<%= f.password_field :password %>
+	<%= f.label :password %>
 	
-	<%= f.label :Confirm_Password %>
 	<%= f.password_field :password_confirmation %>
+	<%= f.label :Confirm_Password %>
 	
-	<%= f.submit "Create Account" %>
+	<%= f.submit "Create Account", :class => "standard_button" %>
+	
+	
 <% end %>
