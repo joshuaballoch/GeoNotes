@@ -1,15 +1,19 @@
 <header>
+	<div class="title"><h1>GeoNotes</h1></div>
+	<%= render 'sessions/signin_form'%>
 	<nav>
 		<ul>
 			<li>
 				<%= link_to "Home", root_path%>
 			</li>
-			<li>
-				<%= link_to "Community", users_path %>
-			</li>
-			<li>
-				<%= link_to "Other Links", "#"%>
-			</li>
+			<% if signed_in? %>
+				<li>
+					<%= link_to "Community", users_path %>
+				</li>
+				<li>
+					<%= link_to "Sign Out", '/signout' %>
+				</li>
+			<% end %>
 		</ul>
 	</nav>			
 </header>

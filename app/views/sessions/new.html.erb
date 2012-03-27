@@ -1,0 +1,15 @@
+<div class="signin_form">
+	<h1> Sign In </h1>
+	<%= form_for(:session, :url => sessions_path) do |f| %>
+		<%= render 'shared/messages'%>
+		<div class="column">
+			<%= f.label :username_or_email %>
+			<%= f.text_field :username %>
+		</div>
+		<div class="column">
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+		</div>
+		<%= f.submit "Sign In", :class => "standard_button"%>
+	<% end %>
+</div>

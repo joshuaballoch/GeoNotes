@@ -1,21 +1,2 @@
-this is the home page for now.
 
-<%= form_for @user do |f| %>
-<%= render 'shared/messages' %>
-
-	<%= f.text_field :username %>
-	<%= f.label :username %>
-	
-	<%= f.text_field :email %>
-	<%= f.label :email %>
-
-	<%= f.password_field :password %>
-	<%= f.label :password %>
-	
-	<%= f.password_field :password_confirmation %>
-	<%= f.label :Confirm_Password %>
-	
-	<%= f.submit "Create Account", :class => "standard_button" %>
-	
-	
-<% end %>
+<%= render 'users/new_user_form' unless signed_in? %>

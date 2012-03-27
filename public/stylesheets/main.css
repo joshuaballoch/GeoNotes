@@ -2,6 +2,7 @@ body {
 	background:#e5e5e5;
 	font-family: Helvetica, Arial;
 }
+
 a, a:visited {
 	color:inherit;
 	text-decoration:none;
@@ -9,12 +10,76 @@ a, a:visited {
 a:hover {
 	color:#0164df;
 }
+h1, h2, h3, h4, h5 {
+	color:#474747;
+}
+.column {
+	display:inline-block;
+}
 header {
 	width:900px;
 	height:100px;
 	background:#ccc;
 	margin:0 auto 0 auto;
 	position:relative;
+	overflow:hidden;
+}
+header .title {
+	position:absolute;
+	bottom:-150px;
+	left:10px;
+}
+header .title h1 {
+	font-size:162px;
+	color:#909090;
+}
+.signin_form {
+	width:350px;
+	position:absolute;
+	bottom:5px;
+	left:10px;
+}
+
+.signin_form label{
+	display:block;
+	font-size:11px;
+	font-weight:100;
+	margin-left:2px;
+	color:#474747;
+}
+.signin_form input {
+	width:130px;
+	padding:2px;
+}
+#session_submit {
+	display:inline;
+	width:50px;
+}
+
+
+section .signin_form {
+	position:relative;
+	width:280px;
+	padding:20px;
+	margin: 150px auto 0 auto;
+	border:1px solid #e5e5e5;
+	text-align:center;
+}
+section .signin_form h1 {
+	margin-top:0px;
+	margin-bottom:10px;
+}
+section .signin_form label {
+	display:block;
+	margin-top:10px;
+}
+section .signin_form input {
+	display:block;
+}
+section #session_submit {
+	display:inline;
+	width:100%;
+	margin-top:5px;
 }
 nav {
 	position: absolute;
@@ -68,11 +133,26 @@ section {
 	border:1px solid #FBC2C4;
 }
 /* Create User Form */
+.new_user_form {
+	float:right;
+	width:370px;
+	margin-top:50px;
+}
+.new_user_form h1 {
+	text-align:center;
+	margin-bottom:0px;
+}
 #new_user, .edit_user {
 	width:370px;
 	position:relative;
 	float:right;
-	margin-top:100px;
+}
+#new_user {
+	border-top:1px solid #e5e5e5;
+	padding-top:20px;
+}
+#new_user .flash {
+	margin-bottom:20px;
 }
 .edit_user {
 	float:left;
@@ -96,7 +176,8 @@ input:focus {
 }
 #new_user #user_submit, .edit_user #user_submit {
 	width:100%;
-	margin-top:5px;
+	padding:8px;
+	margin-top:10px;
 	margin-right:0px;
 }
 
@@ -104,7 +185,6 @@ input:focus {
 .standard_button {
 	position:relative;
 	display:inline;
-	float:left;
 	padding:6px 13px 13px 13px;
 	margin: 0px 3px 0px 0px;
 	color: #474747;

@@ -8,6 +8,10 @@ describe UsersController do
   end
   
   describe "GET 'index'" do 
+    before(:each) do 
+      @user = FactoryGirl.create(:user)
+      test_sign_in(@user)
+    end
     it "should be successful" do
       get 'index'
       response.should be_success
@@ -97,15 +101,15 @@ describe UsersController do
     end
     
     it "should redirect to a user show page after creation" do
-      lambda do
         post :create, :user => @attr
-      end.should redirect_to(user_path(assigns(:user)))
+      response.should redirect_to(user_path(assigns(:user)))
     end    
   end
   
   describe "show user" do
     before(:each) do 
       @user = FactoryGirl.create(:user)
+      test_sign_in(@user)
     end
     
     it "should show the user page" do
@@ -117,6 +121,7 @@ describe UsersController do
   describe "editing tests" do
     before(:each) do 
       @user = FactoryGirl.create(:user)
+      test_sign_in(@user)
     end
     
     it "should load the edit page" do
@@ -133,11 +138,13 @@ describe UsersController do
   describe "test UPDATE" do
     before(:each) do 
       @user = FactoryGirl.create(:user)
+      test_sign_in(@user)
     end
     
     describe "in failure to update" do
       before(:each) do 
-        @attr = {:username => "", :email => "", :password => "", :password_confirmation => ""}
+        @attr = {:username => "", :email => "",
+                :password => "", :password_confirmation => ""}
       end
       
       it "should render the 'edit' page" do 
@@ -153,7 +160,8 @@ describe UsersController do
     
     describe "in success to update" do
       before(:each) do 
-        @attr = {:username => "newname", :email => "newemail@email.com", :password => "password1", :password_confirmation => "password1"}
+        @attr = {:username => "newname", :email => "newemail@email.com",
+           :password => "password1", :password_confirmation => "password1"}
       end
 
       it "should change the user's attributes" do 
