@@ -1,7 +1,1 @@
-<% form_for @note do |f| %>
-	<h1>Create a Note</h1>
-	<%= render "shared/messages"%>
-	<%= f.label "Content" %>
-	<%= f.text_area :content %>
-	<%= f.submit "Create", :class => "standard_button" %>
-<% end %>
+<%= render 'notes/note_form', :h1 => "Create a Note" %>
