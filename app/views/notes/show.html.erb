@@ -1,1 +1,3 @@
-note show page for now
+<h1>Note by <%=@note.user.username%></h1>
+<h5>"<%= @note.content %>"</h5>
+<%="Created  #{time_ago_in_words(@note.created_at)} ago."%>

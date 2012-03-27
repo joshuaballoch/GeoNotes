@@ -72,12 +72,13 @@ describe NotesController do
   describe "create success" do 
     before(:each) do 
       @user = FactoryGirl.create(:user)
-      @attr = {:content => "This is an example note.", :user_id => @user.id}
+      @attr = {:content => "This is an example note."}
     end
     it "should allow users to create notes" do
       test_sign_in(@user)
       lambda do
-        post :create, :note => @attr
+        put :create, :note => @attr
+        response.should redirect_to(note_path(assigns(:note)))
       end.should change(Note, :count)
     end
   end
@@ -106,13 +107,34 @@ describe NotesController do
   end
   
   describe "views - show page" do
+    before(:each) do 
+      @user = FactoryGirl.create(:user)
+      test_sign_in(@user)
+      @attr = {:content => "This is an example note."}
+      @note = @user.notes.build(@attr)
+      @note.save
+    end
     it "should display the note content" do 
+      
     end
   end
-  describe "views - create note page" do
+  describe "views - new note page" do
+    before(:each) do 
+      @user = FactoryGirl.create(:user)
+      test_sign_in(@user)
+      @attr = {:content => "This is an example note."}
+    end
+    it "should be successful" do
+      get 'new'
+      response.should be_success
+    end
     it "should have the right title" do
+      get 'new'
+      response.should have_selector("title", :content => "Create Note")
     end
     it "should have a form" do 
+      get 'new'
+      response.should have_selector("form", :id => "new_note")
     end
     it "should submit the form and create a note" do
     end

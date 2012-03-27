@@ -23,6 +23,8 @@ describe "LayoutLinks" do
       visit root_path
       click_link "Home"
       response.should have_selector('title', :content => "Home")
+      click_link "New Note"
+      response.should have_selector('title', :content => "Create Note")
       click_link "Community"
       response.should have_selector('title', :content => "Community")
       click_link "Sign Out"

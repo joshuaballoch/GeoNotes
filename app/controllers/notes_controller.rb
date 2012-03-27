@@ -1,13 +1,14 @@
 class NotesController < ApplicationController
+  include ApplicationHelper
   before_filter :authenticate
   before_filter :correct_user, :only => [:update, :edit, :destroy]
   def create
-    @note = Note.new(params[:note])
+    @note = current_user.notes.build(params[:note])
     if @note.save
       flash[:success]="Note created!"
       redirect_to @note
     else
-      flash[:error]="Note was not created"
+      render_errors_now(@note)
       render 'new'
     end
   end
@@ -18,7 +19,7 @@ class NotesController < ApplicationController
       flash[:success]="Note updated!"
       redirect_to @note
     else
-      flash[:error]="Note was not updated."
+      render_errors_now(@note)
       render 'edit'
     end
   end
@@ -30,9 +31,13 @@ class NotesController < ApplicationController
   end
   
   def new
+    @note = Note.new
+    @title = "Create Note"
   end
   
   def show
+    @title = "My Note"
+    @note = Note.find(params[:id])
   end
   
   def edit
