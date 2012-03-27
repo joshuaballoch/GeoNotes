@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe NotesController do
+  render_views 
   describe "non-user failures" do
     before(:each) do
       @user = FactoryGirl.create(:user)
@@ -115,7 +116,25 @@ describe NotesController do
       @note.save
     end
     it "should display the note content" do 
-      
+      get 'show', :id => @note.id
+      response.should have_selector("section", :content => @note.content)
+    end
+  end
+  describe "views - edit page" do
+    before(:each) do 
+      @user = FactoryGirl.create(:user)
+      test_sign_in(@user)
+      @attr = {:content => "This is an example note."}
+      @note = @user.notes.build(@attr)
+      @note.save
+    end
+    it "should have a form" do
+      get 'edit', :id => @note.id
+      response.should have_selector("form", :class => "edit_note")
+    end
+    it "should display have a form with the note content" do 
+      get 'edit', :id => @note.id
+      response.should have_selector("#note_content", :content => @note.content)
     end
   end
   describe "views - new note page" do
@@ -131,12 +150,6 @@ describe NotesController do
     it "should have the right title" do
       get 'new'
       response.should have_selector("title", :content => "Create Note")
-    end
-    it "should have a form" do 
-      get 'new'
-      response.should have_selector("form", :id => "new_note")
-    end
-    it "should submit the form and create a note" do
     end
   end
 end
