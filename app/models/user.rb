@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
                                     :message => "needs to contain at least one numeral."}
   before_create :encrypt_password  
   
+  has_many :notes, :dependent => :destroy
+  
   def self.authenticate(username_or_email, submitted_password)
      user = find_by_username(username_or_email) || find_by_email(username_or_email)
      return nil if user.nil?

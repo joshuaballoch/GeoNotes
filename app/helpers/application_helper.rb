@@ -20,10 +20,6 @@ module ApplicationHelper
   
   def render_errors_now(object)
     object.errors.each do |key|
-      if object.errors[key].join(" ").split.include? "blank"
-        flash.now[:error] = "Please fill all fields"
-        break
-      end
       hash = object.errors[key].join(", ")
       flash.now[:error] = "#{key.capitalize} #{hash}."
     end

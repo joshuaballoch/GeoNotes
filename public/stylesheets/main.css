@@ -212,3 +212,31 @@ input:focus {
 	display:block;
 	padding:20px;
 }
+/* Notes Pages */
+#new_note, .edit_note {
+	width:350px;
+	float:right;
+	position:relative;
+}
+#new_note h1, .edit_note h1 {
+	font-size:19px;
+	margin-bottom:5px;
+}
+#new_note #note_content, .edit_note #note_content {
+	outline:none;
+	resize:none;
+	height:100px;
+	font-size:13px;
+	width:100%;
+}
+#new_note .standard_button, .edit_note .standard_button {
+	width:102%;
+	padding:5px;
+}
+#new_note label, .edit_note label {
+	font-weight:300;
+	margin-left:3px;
+}
+#new_note .flash, .edit_note .flash {
+	margin-bottom:5px;
+}

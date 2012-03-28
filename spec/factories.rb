@@ -5,15 +5,9 @@ Factory.define :user do |user|
   user.password "hUllo9jim"
   user.password_confirmation "hUllo9jim"
 end
-Factory.define :user2 do |user|
-  user.username "JimffBobJoe"
-  user.email "jimbobjoffe.erie@email.org"
-  user.password "hUllo9jim"
-  user.password_confirmation "hUllo9jim"
+Factory.sequence :email do |n|
+  "anotheremail-#{n}@email.com"
 end
-Factory.define :user3 do |user|
-  user.username "JimffBfobJoe"
-  user.email "jimbobjofsfe.erie@email.org"
-  user.password "hUllo9jim"
-  user.password_confirmation "hUllo9jim"
+Factory.sequence :username do |n|
+  "JimBobJoe-#{n}"
 end
