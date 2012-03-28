@@ -3,5 +3,7 @@
 	<%= render "shared/messages"%>
 	<%= f.label "Content" %>
 	<%= f.text_area :content %>
+	<%= f.label "Tags" %>
+	<%= f.text_field :tag_list %>
 	<%= f.submit "Create", :class => "standard_button" %>
 <% end %>

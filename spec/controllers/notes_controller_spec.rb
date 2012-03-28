@@ -5,8 +5,8 @@ describe NotesController do
   describe "non-user failures" do
     before(:each) do
       @user = FactoryGirl.create(:user)
-      @real = {:content => "This is an example note.", :user_id => @user.id}
-      @attr = {:content => "This is an example note."}
+      @real = {:content => "This is an example note.", :user_id => @user.id, :tag_list => "Tagname1, Tagname2"}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
     end
     it "should not allow non-users to create notes" do
       lambda do 
@@ -17,7 +17,7 @@ describe NotesController do
   describe "non-user failures2" do
     before(:each) do
       @user = FactoryGirl.create(:user)
-      @attr = {:content => "This is an example note."}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
       @note = @user.notes.build(@attr)
       @note.save
     end
@@ -48,7 +48,7 @@ describe NotesController do
   describe "failures" do
     before(:each) do 
       @user = FactoryGirl.create(:user)
-      @attr = {:content => "This is an example note.", :user_id => @user.id}
+      @attr = {:content => "This is an example note.", :user_id => @user.id, :tag_list => "Tagname1, Tagname2"}
       @note = @user.notes.build(@attr)
       @note.save
       @user2 = FactoryGirl.create(:user, :username => FactoryGirl.generate(:username), :email => FactoryGirl.generate(:email))
@@ -73,7 +73,7 @@ describe NotesController do
   describe "create success" do 
     before(:each) do 
       @user = FactoryGirl.create(:user)
-      @attr = {:content => "This is an example note."}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
     end
     it "should allow users to create notes" do
       test_sign_in(@user)
@@ -82,13 +82,15 @@ describe NotesController do
         response.should redirect_to(note_path(assigns(:note)))
       end.should change(Note, :count)
     end
+    it "should relate the note to its tags" do
+    end
   end
   
   describe "edit update success" do 
     before(:each) do 
       @user = FactoryGirl.create(:user)
       test_sign_in(@user)
-      @attr = {:content => "This is an example note.", :user_id => @user.id}
+      @attr = {:content => "This is an example note.", :user_id => @user.id, :tag_list => "Tagname1, Tagname2"}
       @note = @user.notes.build(@attr)
       @note.save
     end
@@ -111,7 +113,7 @@ describe NotesController do
     before(:each) do 
       @user = FactoryGirl.create(:user)
       test_sign_in(@user)
-      @attr = {:content => "This is an example note."}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
       @note = @user.notes.build(@attr)
       @note.save
     end
@@ -119,12 +121,22 @@ describe NotesController do
       get 'show', :id => @note.id
       response.should have_selector("section", :content => @note.content)
     end
+    it "should display the note's tags" do
+      get 'show', :id => @note.id
+      @note.tags.each do |k|
+        response.should have_selector("section", :content => "#{k.name}")
+      end
+    end
+    it "should display a link to the edit page" do
+      get 'show', :id => @note.id
+      response.should have_selector("a", :content =>"edit")
+    end
   end
   describe "views - edit page" do
     before(:each) do 
       @user = FactoryGirl.create(:user)
       test_sign_in(@user)
-      @attr = {:content => "This is an example note."}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
       @note = @user.notes.build(@attr)
       @note.save
     end
@@ -135,6 +147,10 @@ describe NotesController do
     it "should display have a form with the note content" do 
       get 'edit', :id => @note.id
       response.should have_selector("#note_content", :content => @note.content)
+    end
+    it "should have an input for tags" do
+      get 'edit', :id => @note.id
+      response.should have_selector("input", :id => "note_tag_list")
     end
   end
   describe "views - new note page" do
@@ -150,6 +166,14 @@ describe NotesController do
     it "should have the right title" do
       get 'new'
       response.should have_selector("title", :content => "Create Note")
+    end
+    it "should have an input for the note content" do
+      get 'new'
+      response.should have_selector("textarea", :id => "note_content")
+    end
+    it "should have an input for tags" do
+      get 'new'
+      response.should have_selector("input", :id => "note_tag_list")
     end
   end
 end

@@ -229,6 +229,11 @@ input:focus {
 	font-size:13px;
 	width:100%;
 }
+#new_note #note_tag_list, .edit_note #note_tag_list {
+	width:100%;
+	font-size:13px;
+	margin-bottom:10px;
+}
 #new_note .standard_button, .edit_note .standard_button {
 	width:102%;
 	padding:5px;

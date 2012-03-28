@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Note do
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @attr = {:content => "This is an example note."}
+    @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
   end
   it "should create a new note" do
     @user.notes.create!(@attr)
@@ -23,7 +23,7 @@ describe Note do
       before(:each) do 
         @tag = Tag.new(:name =>"name")
         @tag.save
-        @note.tags =[@tag]
+        @note.tag_list ="#{@tag.name}"
       end
       it "should be able to have tags" do
         @note.should respond_to(:tags)
