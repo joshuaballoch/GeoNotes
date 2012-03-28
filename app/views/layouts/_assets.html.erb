@@ -1,7 +1,13 @@
 <!-- Stylesheets -->
 <%= stylesheet_link_tag :all %>
+<link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.ie.css" />
+<![endif]-->
 
 <!-- Javascripts  -->
 <%= javascript_include_tag 'jquery_ujs.js' %>
 <%= javascript_include_tag 'jquery.min.js' %>
 <%= javascript_include_tag 'application.js' %>
+<%= javascript_include_tag 'http://code.leafletjs.com/leaflet-0.3.1/leaflet.js' %>
+<%= javascript_include_tag 'maps_testing.js' %>
