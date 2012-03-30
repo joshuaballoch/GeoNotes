@@ -1,5 +1,5 @@
 body {
-	background:#e5e5e5;
+	background:#e4f1fd;
 	font-family: Helvetica, Arial;
 }
 
@@ -60,7 +60,7 @@ h4 {
 header {
 	width:900px;
 	height:100px;
-	background:#ccc;
+	background:#c5dffe;
 	margin:0 auto 0 auto;
 	position:relative;
 	overflow:hidden;
@@ -246,12 +246,13 @@ input:focus {
 	color: #474747;
 	font-size:12px;
 	font-weight:500;
-	background-color: #e5e5e5;
+	background-color: #c5dffe;
 	border: 1px solid #8f8f8f;
 }
 .standard_button:hover {
-	background:#cbc9c9;
+	background:#3399ff;
 	border: 1px solid #474747;
+	color:#e9eaec;
 }
 .standard_button span{
 	position:absolute;
@@ -360,6 +361,14 @@ form.button_to div {
 	width:0px;;
 }
 
+/*Tag Pages */
+.tag_tile {
+	border:1px solid #e5e5e5;
+	margin:5px;
+	display:inline-block;
+	padding:20px;
+	font-weight:200;
+}
 footer {
 	width:875px;
 	margin:0 auto 0 auto;

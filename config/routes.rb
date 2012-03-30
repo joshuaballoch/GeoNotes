@@ -7,4 +7,5 @@ GeoNotes::Application.routes.draw do
   resources :notes
   resources :users
   resources :sessions
+  resources :tags
 end

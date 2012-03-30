@@ -10,7 +10,7 @@
 	</h4>
 	<h5>Tags:
 	<% note.tags.each do |k| %>
-		<%= k.name %>
+		<%=link_to k.name, k %>
 		<%= "·" unless k == note.tags.last %>
 	<% end %>
 	</h5>

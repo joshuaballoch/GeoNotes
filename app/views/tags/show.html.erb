@@ -1,0 +1,8 @@
+<%= render 'shared/section_nav' %>
+<h1>Notes tagged with <%= @tag.name %></h1>
+<div id="map"></div>
+<% content_for :map_javascript do %>
+	<%= javascript_include_tag 'maps/show_note.js' %>
+<% end %>
+
+<%= render @notes %>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       flash[:success]="User Created!"
     else
       render_errors_now(@user)
-      render 'pages/home'
+      render 'users/new'
     end
   end
   

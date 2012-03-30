@@ -1,0 +1,4 @@
+<div class="tag_tile">
+	<%= link_to tag.name, tag %>
+	<%= "| #{pluralize(tag.notes.count, "Notes")}" %>
+</div>
