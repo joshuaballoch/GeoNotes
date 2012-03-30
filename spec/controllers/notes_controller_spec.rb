@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe NotesController do
   render_views 
+  
   describe "non-user failures" do
     before(:each) do
       @user = FactoryGirl.create(:user)
-      @real = {:content => "This is an example note.", :user_id => @user.id, :tag_list => "Tagname1, Tagname2"}
-      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
+      @real = {:content => "This is an example note.", :user_id => @user.id, :tag_list => "Tagname1, Tagname2", :latitude => 45.52, :longitude => -73.57801}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2", :latitude => 45.52, :longitude => -73.57801}
     end
     it "should not allow non-users to create notes" do
       lambda do 
@@ -17,7 +18,7 @@ describe NotesController do
   describe "non-user failures2" do
     before(:each) do
       @user = FactoryGirl.create(:user)
-      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2", :latitude => 45.52, :longitude => -73.57801}
       @note = @user.notes.build(@attr)
       @note.save
     end
@@ -48,7 +49,7 @@ describe NotesController do
   describe "failures" do
     before(:each) do 
       @user = FactoryGirl.create(:user)
-      @attr = {:content => "This is an example note.", :user_id => @user.id, :tag_list => "Tagname1, Tagname2"}
+      @attr = {:content => "This is an example note.", :user_id => @user.id, :tag_list => "Tagname1, Tagname2", :latitude => 45.52, :longitude => -73.57801}
       @note = @user.notes.build(@attr)
       @note.save
       @user2 = FactoryGirl.create(:user, :username => FactoryGirl.generate(:username), :email => FactoryGirl.generate(:email))
@@ -73,7 +74,7 @@ describe NotesController do
   describe "create success" do 
     before(:each) do 
       @user = FactoryGirl.create(:user)
-      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2", :latitude => 45.52, :longitude => -73.57801}
     end
     it "should allow users to create notes" do
       test_sign_in(@user)
@@ -90,7 +91,7 @@ describe NotesController do
     before(:each) do 
       @user = FactoryGirl.create(:user)
       test_sign_in(@user)
-      @attr = {:content => "This is an example note.", :user_id => @user.id, :tag_list => "Tagname1, Tagname2"}
+      @attr = {:content => "This is an example note.", :user_id => @user.id, :tag_list => "Tagname1, Tagname2", :latitude => 45.52, :longitude => -73.57801}
       @note = @user.notes.build(@attr)
       @note.save
     end
@@ -113,7 +114,7 @@ describe NotesController do
     before(:each) do 
       @user = FactoryGirl.create(:user)
       test_sign_in(@user)
-      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2", :latitude => 45.52, :longitude => -73.57801}
       @note = @user.notes.build(@attr)
       @note.save
     end
@@ -136,7 +137,7 @@ describe NotesController do
     before(:each) do 
       @user = FactoryGirl.create(:user)
       test_sign_in(@user)
-      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
+      @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2", :latitude => 45.52, :longitude => -73.57801}
       @note = @user.notes.build(@attr)
       @note.save
     end

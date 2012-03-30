@@ -1,1 +1,6 @@
-<%= render 'notes/note_form', :h1 => "Create a Note" %>
+<%= render 'shared/section_nav' %>
+
+<h1>Make a new note!</h1>
+<p>Click anywhere on the map to create a new note!</p>
+<div id="map"></div>
+<div class="hidden"><%= render 'notes/note_form', :h1 => "Create a Note" %></div>

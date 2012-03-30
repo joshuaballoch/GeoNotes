@@ -1,9 +1,17 @@
-<% form_for @note do |f| %>
-	<h1><%= h1 %></h1>
-	<%= render "shared/messages"%>
-	<%= f.label "Content" %>
-	<%= f.text_area :content %>
-	<%= f.label "Tags" %>
-	<%= f.text_field :tag_list %>
-	<%= f.submit "Create", :class => "standard_button" %>
-<% end %>
+<div id="note-form-wrapper">
+	<%= form_for @note do |f| %>
+		<h1><%= h1 %></h1>
+		<%= render "shared/messages"%>
+		<%= f.label "Content" %>
+		<%= f.text_area :content %>
+		<%= f.label "Tags" %>
+		<%= f.text_field :tag_list %>
+		<%= f.hidden_field :latitude %>
+		<%= f.hidden_field :longitude %>
+		<%= f.submit "Submit", :class => "standard_button" %>
+	<% end %>
+	<% content_for :map_javascript do %>
+		<%= javascript_include_tag 'maps/new_note.js' if @note.id.nil? %>
+		<%= javascript_include_tag 'maps/edit_note.js' unless @note.id.nil? %>
+	<% end %>
+</div>

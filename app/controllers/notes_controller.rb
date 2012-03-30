@@ -6,7 +6,7 @@ class NotesController < ApplicationController
     @note = current_user.notes.build(params[:note])
     if @note.save
       flash[:success]="Note created!"
-      redirect_to @note
+      redirect_to root_path
     else
       render_errors_now(@note)
       render 'new'
@@ -17,7 +17,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     if @note.update_attributes(params[:note])
       flash[:success]="Note updated!"
-      redirect_to @note
+      redirect_to root_path
     else
       render_errors_now(@note)
       render 'edit'
@@ -38,9 +38,21 @@ class NotesController < ApplicationController
   def show
     @title = "My Note"
     @note = Note.find(params[:id])
+    gon.note = @note.attributes
+    gon.current_user = current_user.id
+  end
+  
+  def index
+    @title = "My Notes"
+    @notes = Note.all
+      gon.notes=[]
+      @notes.each_with_index do |k, index|
+        gon.notes[index] = k.attributes
+      end    
   end
   
   def edit
+    gon.note = @note.attributes
   end
   
   private

@@ -1,0 +1,17 @@
+<div id="section_nav">
+	<% current_uri = request.env['PATH_INFO'] %>
+	<% if current_uri == "/" %>
+		<div class="here"><h1><%= link_to "My Notes", root_path %></h1></div> ·
+		<h1><%= link_to "See Everyones!", notes_path %></h1> ·
+		<h2><%= link_to "+", new_note_path %></h2>
+	<% elsif current_uri == "/notes" %>
+		<h1><%= link_to "My Notes", root_path %></h1> ·
+		<div class="here"><h1><%= link_to "See Everyones!", notes_path %></h1></div> ·
+		<h2><%= link_to "+", new_note_path %></h2>
+	<% else %>
+		<h1><%= link_to "My Notes", root_path %></h1> ·
+		<h1><%= link_to "See Everyones!", notes_path %></h1> ·
+		<div class="here"><h2><%= link_to "+", new_note_path %></h2></div>
+	<% end %>
+
+</div>

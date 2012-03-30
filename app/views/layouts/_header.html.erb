@@ -1,22 +1,25 @@
 <header>
 	<div class="title"><h1>GeoNotes</h1></div>
 	<%= render 'sessions/signin_form'%>
-	<nav>
-		<ul>
-			<li>
-				<%= link_to "Home", root_path%>
-			</li>
-			<% if signed_in? %>
-				<li>
-					<%= link_to "Community", users_path %>
-				</li>
-				<li>
-					<%= link_to "New Note", new_note_path %>
-				</li>
-				<li>
-					<%= link_to "Sign Out", '/signout' %>
-				</li>
-			<% end %>
-		</ul>
-	</nav>			
+	<% if signed_in? %>	
+		<nav>
+			<ul>
+					<li>
+						<%= link_to "Home", root_path%>
+					</li>
+					<li>
+						· <%= link_to "Community", users_path %>
+					</li>
+			
+					<li>
+						· <%= link_to "New Note", new_note_path %>
+					</li>
+			
+					<li>
+						· <%= link_to "Sign Out", '/signout' %>
+					</li>
+			</ul>
+		</nav>			
+	<% end %>
+	
 </header>

@@ -4,14 +4,55 @@ body {
 }
 
 a, a:visited {
-	color:inherit;
+	color:#0164df;
 	text-decoration:none;
 }
 a:hover {
-	color:#0164df;
+	color:#3399ff;
 }
 h1, h2, h3, h4, h5 {
 	color:#474747;
+}
+#section_nav h1 {
+	margin:0 0 5px 0;
+	display:inline-block;
+}
+#section_nav h2 {
+	font-size:30px;
+	line-height:7px;
+	margin:0 0 5px 0;
+	display:inline-block;
+}
+#section_nav .here {
+	display:inline-block;
+	vertical-align:bottom;
+}
+#section_nav .here h1 a, #section_nav .here h2 a  {
+	display:inline-block;
+	border-left:1px solid #e5e5e5;
+	border-top:1px solid #e5e5e5;
+	border-right:1px solid #e5e5e5;
+	padding-left:3px;
+	padding-right:3px;
+	color:#474747;
+}
+#section_nav .here h2 a {
+	line-height:27px;
+}
+
+section p {
+	font-weight:200;
+	margin:0 0 5px 10px;
+}
+h5 {
+	font-size:10px;
+	text-transform:uppercase;
+	font-style:italic;
+	color:#444;
+	font-weight:400;
+}
+h4 {
+	font-size:11px;
 }
 .column {
 	display:inline-block;
@@ -26,18 +67,18 @@ header {
 }
 header .title {
 	position:absolute;
-	bottom:-150px;
+	bottom:-99px;
 	left:10px;
 }
 header .title h1 {
-	font-size:162px;
+	font-size:112px;
 	color:#909090;
 }
 .signin_form {
 	width:350px;
 	position:absolute;
 	bottom:5px;
-	left:10px;
+	right:-10px;
 }
 
 .signin_form label{
@@ -50,6 +91,10 @@ header .title h1 {
 .signin_form input {
 	width:130px;
 	padding:2px;
+}
+.signin_form .standard_button {
+	display:inline;
+	width:50px;
 }
 #session_submit {
 	display:inline;
@@ -106,9 +151,9 @@ nav li {
 	font-size: 16px;
 }
 section {
-	width:860px;
+	width:880px;
 	min-height:500px;
-	padding: 20px;	
+	padding: 10px;	
 	background:#fff;
 	margin:0 auto 0 auto;
 	overflow:hidden;
@@ -132,12 +177,23 @@ section {
 	color:#D12F19;
 	border:1px solid #FBC2C4;
 }
-/* Create User Form */
-.new_user_form {
+.info_form {
 	float:right;
 	width:370px;
-	margin-top:50px;
+	margin-top:90px;
 }
+.info_form h1 {
+	text-align:center;
+}
+.info_form p {
+	margin-left:0;
+	margin-bottom:5px;
+	margin-right:10px;
+	line-height:24px;
+	text-align:center;
+}
+/* Create User Form */
+
 .new_user_form h1 {
 	text-align:center;
 	margin-bottom:0px;
@@ -207,15 +263,25 @@ input:focus {
 
 /* User Pages */
 .user_tile {
-	width:300px;
-	border-bottom:1px solid #e5e5e5;
-	display:block;
+	width:395px;
+	border:1px solid #e5e5e5;
+	margin-bottom:5px;
+	display:inline-block;
 	padding:20px;
+}
+.user_tile .timestamp {
+	font-weight:200;
+}
+.user_tile h1 {
+	margin:0 0 15px 0;
 }
 /* Notes Pages */
 #new_note, .edit_note {
-	width:350px;
-	float:right;
+	width:250px;
+	margin-left:-5px;
+	margin-top:-20px;
+	display:inline-block;
+	vertical-align:top;
 	position:relative;
 }
 #new_note h1, .edit_note h1 {
@@ -244,4 +310,62 @@ input:focus {
 }
 #new_note .flash, .edit_note .flash {
 	margin-bottom:5px;
+}
+/* Maps settings */
+#map {
+	height:600px;
+	width:880px;
+	display:inline-block;
+}
+.signed_out#map {
+	width:480px;
+	height:520px;
+	margin:10px 0 -30px 10px;
+}
+.hidden {
+	display:none;
+}
+.leaflet-popup-content p {
+	line-height:13px;
+	margin-bottom:-10px;
+	font-size:14px;
+}
+.leaflet-popup-content h4 {
+	margin-top:0px;
+	margin-bottom:0px;
+	font-weight:400;
+}
+.leaflet-popup-content h5 {
+	margin-top:0px;
+	margin-bottom:0px;
+	font-weight:400;
+}
+/* Fixing button_to */
+.button_to input {
+	display:inline;
+	background:none;
+	border:none;
+	color:inherit;
+	font-size:inherit;
+	padding:none;
+}
+.button_to input:hover {
+	color:#0164df;
+}
+form.button_to {
+	display:inline;
+}
+form.button_to div {
+	background:red;
+	width:0px;;
+}
+
+footer {
+	width:875px;
+	margin:0 auto 0 auto;
+	background:#fff;
+	padding: 0 15px 10px 10px;
+	text-align:right;
+	font-weight:100;
+	font-size:13px;
 }

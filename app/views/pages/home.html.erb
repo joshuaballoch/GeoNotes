@@ -1,4 +1,17 @@
 
 <%= render 'users/new_user_form' unless signed_in? %>
 
-<div id="map" style="height: 200px"></div>
+<% if signed_in? %>
+	<%= render 'shared/section_nav' %>
+	<div id="map"></div>
+	<% content_for :map_javascript do %>
+		<%= javascript_include_tag 'maps/show_note.js' %>
+	<% end %>
+
+	<%= render @notes %>
+<% else %>
+	<div class="signed_out" id="map"></div>
+	<% content_for :map_javascript do %>
+		<%= javascript_include_tag 'maps/basic.js' %>
+	<% end %>
+<% end %>

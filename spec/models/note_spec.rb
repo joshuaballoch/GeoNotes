@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Note do
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2"}
+    @attr = {:content => "This is an example note.", :tag_list => "Tagname1, Tagname2", :latitude => 45.52, :longitude => -73.57801}
   end
   it "should create a new note" do
     @user.notes.create!(@attr)

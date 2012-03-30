@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Tagging do
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @note_attr = {:content => "this is a note.", :tag_list => "This is a tag name"}
+    @note_attr = {:content => "this is a note.", :tag_list => "This is a tag name", :latitude => 45.52, :longitude => -73.57801}
     @note = @user.notes.create!(@note_attr)
     @note.save
     @tag = Tag.new(:name => "Tagnameisthis")

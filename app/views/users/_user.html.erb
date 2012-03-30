@@ -1,3 +1,6 @@
 <div class="user_tile">
-	<%= link_to user.username, user %>
+	<h1><%= link_to user.username, user %></h1>
+	<div class="timestamp">
+		<%= "#{pluralize(user.notes.count, "note")}  | Member for #{time_ago_in_words(user.created_at)}"%>
+	</div>
 </div>

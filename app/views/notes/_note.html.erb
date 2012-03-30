@@ -1,0 +1,17 @@
+<div class="hidden", id="note_<%=note.id%>">
+	<p><%= note.content %></p>
+
+	<h4><%="#{time_ago_in_words(note.created_at).capitalize} ago by "%> 
+	<%= link_to note.user.username, note.user %>
+	<% if note.user == current_user %>
+	 | <%= link_to "edit", edit_note_path(note) %>
+	 | <%= link_to "delete", note, :method => :delete,:confirm => "Are you sure", :remote => true %>
+	<% end %>
+	</h4>
+	<h5>Tags:
+	<% note.tags.each do |k| %>
+		<%= k.name %>
+		<%= "·" unless k == note.tags.last %>
+	<% end %>
+	</h5>
+</div>

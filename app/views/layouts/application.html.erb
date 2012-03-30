@@ -3,6 +3,8 @@
 <head>
   <title><%= title %></title>
   <%= render 'layouts/assets' %>
+  <%= include_gon %>
+
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -11,6 +13,7 @@
 	<section>
 		<%= yield %>
 	</section>
-
+	<%= render 'layouts/footer'%>
 </body>
+
 </html>
