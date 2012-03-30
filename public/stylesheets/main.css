@@ -64,14 +64,16 @@ header {
 	margin:0 auto 0 auto;
 	position:relative;
 	overflow:hidden;
+
 }
 header .title {
 	position:absolute;
-	bottom:-99px;
+	bottom:-74px;
 	left:10px;
 }
 header .title h1 {
-	font-size:112px;
+	font-size:91px;
+	font-weight:900;
 	color:#909090;
 }
 .signin_form {
@@ -133,13 +135,14 @@ nav {
 }
 
 nav ul {
-	margin:0px 0px 0 0 ;
+	margin:0;
 	padding:0px;
 }
 
 nav li {
 	color:#fff;
-	padding:6px 3px 18px 3px;
+	padding:3px 4px 18px 0px;
+	margin-right:0px;
 	list-style:none;
 	float:left;
 	display:inline-block;
@@ -148,7 +151,7 @@ nav li {
 	text-align: center;
 	font-family: "Helvetica";
 	font-weight:100;
-	font-size: 16px;
+	font-size: 14px;
 }
 section {
 	width:880px;
@@ -182,6 +185,9 @@ section {
 	width:370px;
 	margin-top:90px;
 }
+.info_form.thin{
+	width:260px;
+}
 .info_form h1 {
 	text-align:center;
 }
@@ -202,6 +208,9 @@ section {
 	width:370px;
 	position:relative;
 	float:right;
+}
+.edit_user {
+	width:260px;
 }
 #new_user {
 	border-top:1px solid #e5e5e5;
@@ -322,6 +331,9 @@ input:focus {
 	width:480px;
 	height:520px;
 	margin:10px 0 -30px 10px;
+}
+.thinner#map {
+	width:600px;
 }
 .hidden {
 	display:none;

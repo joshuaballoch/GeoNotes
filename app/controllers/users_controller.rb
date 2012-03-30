@@ -17,6 +17,11 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @title = "Edit User"
+    @notes = @user.notes
+      gon.notes=[]
+      @notes.each_with_index do |k, index|
+        gon.notes[index] = k.attributes
+      end
   end
   
   def update
@@ -39,6 +44,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @title = @user.username
+    @notes = @user.notes
+      gon.notes=[]
+      @notes.each_with_index do |k, index|
+        gon.notes[index] = k.attributes
+      end
   end
   
   private
