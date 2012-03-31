@@ -230,11 +230,15 @@ section {
 	font-weight:600;
 	color:#474747;
 }
+
 #new_user input, .edit_user input {
 	float:right;
 	padding:2px;
 	font-size:14px;
 	margin-right:1px;
+}
+.edit_user label, .edit_user input {
+	float:left;
 }
 input:focus {
 	outline:none;
@@ -245,7 +249,9 @@ input:focus {
 	margin-top:10px;
 	margin-right:0px;
 }
-
+.edit_user .standard_button {
+	margin-top:10px;
+}
 /* Standard Buttons */
 .standard_button {
 	position:relative;
