@@ -80,7 +80,7 @@ describe NotesController do
       test_sign_in(@user)
       lambda do
         put :create, :note => @attr
-        response.should redirect_to(note_path(assigns(:note)))
+        response.should redirect_to(root_path)
       end.should change(Note, :count)
     end
     it "should relate the note to its tags" do

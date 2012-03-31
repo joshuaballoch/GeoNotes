@@ -31,6 +31,11 @@ class UsersController < ApplicationController
       flash[:success]="User updated"
     else
       @title = "Edit User"
+      @notes = @user.notes
+        gon.notes=[]
+        @notes.each_with_index do |k, index|
+          gon.notes[index] = k.attributes
+        end
       render_errors_now(@user)
       render 'edit'
     end

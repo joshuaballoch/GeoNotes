@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_filter :authenticate
   def show 
     @tag = Tag.find(params[:id])
     @notes = @tag.notes

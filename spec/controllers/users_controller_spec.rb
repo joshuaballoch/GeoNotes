@@ -100,9 +100,9 @@ describe UsersController do
       end.should change(User, :count)
     end
     
-    it "should redirect to a user show page after creation" do
+    it "should redirect to a root  page after creation" do
         post :create, :user => @attr
-      response.should redirect_to(user_path(assigns(:user)))
+      response.should redirect_to(root_path)
     end    
   end
   

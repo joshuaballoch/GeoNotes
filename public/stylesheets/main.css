@@ -355,7 +355,9 @@ input:focus {
 }
 /* Fixing button_to */
 .button_to input {
-	display:inline;
+	position:absolute;
+	bottom:20px;
+	right:5px;
 	background:none;
 	border:none;
 	color:inherit;

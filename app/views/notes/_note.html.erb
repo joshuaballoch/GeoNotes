@@ -5,7 +5,7 @@
 	<%= link_to note.user.username, note.user %>
 	<% if note.user == current_user %>
 	 | <%= link_to "edit", edit_note_path(note) %>
-	 | <%= link_to "delete", note, :method => :delete,:confirm => "Are you sure", :remote => true %>
+	  <%= button_to "delete", note, :method => :delete,:confirm => "Are you sure" %>
 	<% end %>
 	</h4>
 	<h5>Tags:
