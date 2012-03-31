@@ -4,6 +4,8 @@ gem 'rails', '3.1.3'
 
 gem 'mysql2', '~> 0.3.2'
 gem 'jquery-rails'
+gem 'pg'
+
 gem 'gon' #for passing variables to javascript files
 
 group :development do
