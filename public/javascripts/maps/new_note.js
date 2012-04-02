@@ -10,6 +10,13 @@ $(document).ready(function(){
 	var montreal = new L.LatLng(45.515, -73.58)
 	map.setView(montreal, 14).addLayer(cloudmade);
 	
+	if (gon.note){
+		map.setView(new L.LatLng(gon.note["latitude"], gon.note["longitude"]), 14).addLayer(cloudmade);
+		var marker = new L.Marker(new L.LatLng(gon.note["latitude"], gon.note["longitude"]),{draggable:true})
+		map.addLayer(marker);
+		var form = $("#note-form-wrapper").html();
+		marker.bindPopup(form).openPopup();
+	}
 //	map.locate({setView: true, maxZoom: maxZoom}).addLayer(cloudmade);
 	map.on('click', onMapClick);
 	function onMapClick(e) {

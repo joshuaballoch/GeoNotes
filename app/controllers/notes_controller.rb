@@ -9,6 +9,7 @@ class NotesController < ApplicationController
       redirect_to root_path
     else
       render_errors_now(@note)
+      gon.note = @note.attributes
       render 'new'
     end
   end
@@ -32,6 +33,7 @@ class NotesController < ApplicationController
   
   def new
     @note = Note.new
+    gon.note = nil
     @title = "Create Note"
   end
   
